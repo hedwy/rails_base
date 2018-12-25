@@ -9,3 +9,9 @@ RUN apt-get update && apt-get install -y mysql-client postgresql-client sqlite3 
 ENV RAILS_VERSION 5.2.2
 
 RUN gem install rails --version "$RAILS_VERSION"
+
+RUN mkdir -p /app
+WORKDIR /app
+
+EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]
