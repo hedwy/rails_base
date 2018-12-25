@@ -13,5 +13,8 @@ RUN gem install rails --version "$RAILS_VERSION"
 RUN mkdir -p /app
 WORKDIR /app
 
+COPY Gemfile .
+RUN bundle install && rm Gemfile
+
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
